@@ -1,0 +1,36 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "motivate me",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetNewFactIntent",
+                    "slots": [],
+                    "samples": [
+                        "cheer me up",
+                        "tell me something motivational",
+                        "i'm feeling low",
+                        "motivate me"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
