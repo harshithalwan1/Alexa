@@ -26,7 +26,6 @@
                     "name": "GetNewFactIntent",
                     "slots": [],
                     "samples": [
-                        "yes",
                         "give me a batman fact",
                         "tell me about batman",
                         "a fact",
