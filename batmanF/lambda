@@ -47,13 +47,14 @@ const data = [
 //=========================================================================================================================================
 //Editing anything below this line might break your skill.
 //=========================================================================================================================================
-
+//Lunch skill intent
 const handlers = {
     'LaunchRequest': function () {
         var imbatman = '<voice name="Matthew">I am Batman. wanna know about me?</voice>.';
         this.response.speak(imbatman);
         this.emit(':responseReady');
     },
+// only intent of the skill
     'GetNewFactIntent': function () {
         const factArr = data;
         const factIndex = Math.floor(Math.random() * factArr.length);
