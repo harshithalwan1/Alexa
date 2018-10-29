@@ -1,0 +1,44 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "superman facts",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetNewFactIntent",
+                    "slots": [],
+                    "samples": [
+                        "superman trivia",
+                        "give me a superman fact",
+                        "tell me a superman fact",
+                        "tell me about superman",
+                        "a fact",
+                        "tell me a fact",
+                        "give me a fact",
+                        "tell me trivia",
+                        "give me trivia",
+                        "give me some information",
+                        "tell me something",
+                        "give me something"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
