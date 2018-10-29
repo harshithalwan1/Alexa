@@ -47,11 +47,13 @@ const data = [
 //=========================================================================================================================================
 //Editing anything below this line might break your skill.
 //=========================================================================================================================================
-
+// Launching the skill 
 const handlers = {
     'LaunchRequest': function () {
         this.emit('GetNewFactIntent');
     },
+    
+//Only user defined intent of the skill
     'GetNewFactIntent': function () {
         const factArr = data;
         const factIndex = Math.floor(Math.random() * factArr.length);
