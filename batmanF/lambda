@@ -1,0 +1,89 @@
+/* eslint-disable  func-names */
+/* eslint quote-props: ["error", "consistent"]*/
+/**
+ * This sample demonstrates a simple skill built with the Amazon Alexa Skills
+ * nodejs skill development kit.
+ * This sample supports multiple lauguages. (en-US, en-GB, de-DE).
+ * The Intent Schema, Custom Slots and Sample Utterances for this skill, as well
+ * as testing instructions are located at https://github.com/alexa/skill-sample-nodejs-fact
+ **/
+
+'use strict';
+const Alexa = require('alexa-sdk');
+
+//=========================================================================================================================================
+//TODO: The items below this comment need your attention.
+//=========================================================================================================================================
+
+//Replace with your app ID (OPTIONAL).  You can find this value at the top of your skill's page on http://developer.amazon.com.
+//Make sure to enclose your value in quotes, like this: const APP_ID = 'amzn1.ask.skill.bb4045e6-b3e8-4133-b650-72923c5980f1';
+const APP_ID = undefined;
+
+const SKILL_NAME = 'Batman Facts';
+const GET_FACT_MESSAGE = "Here's your fact: ";
+const HELP_MESSAGE = 'You can say tell me a batman fact, or, you can say exit... What can I help you with?';
+const HELP_REPROMPT = 'What can I help you with?';
+const STOP_MESSAGE = '<voice name="Matthew">Goodbye, i thought you were my robin</voice>.';
+
+//=========================================================================================================================================
+//TODO: Replace this data with your own.  You can find translations of this data at http://github.com/alexa/skill-sample-node-js-fact/data
+//=========================================================================================================================================
+const data = [
+    'Batman’s secret identity, Bruce Wayne, was derived from two historical figures. Robert the Bruce, a Scottish national hero: And Mad Anthony Wayne, a hero of the American Revolution:',
+    'Batman Beat Darkseid… Twice! First time, Batman shot Darkseid with a god-killing gun. The second time, Batman put on the Hellbat armor designed by the Justice League, giving him immense strength at the expense of his own life-force.',
+    'There’s a real course called The Science of Batman at the University of Victoria in Canada. ',
+    'Andy Warhol directed the first-ever Batman movie -- titled Batman Dracula -- in 1964.',
+    'Batman writer Bill Finger said he came up with the name Gotham City by opening up a phone book and randomly putting his finger on “Gotham Jewelers.”',
+    'Robin was killed on fans demand who voted for DC comics to kill him',
+    'According to Forbes, Bruce Wayne is worth $7 billion.',
+    'A Marvel DC comic book crossover in 1996 saw Batman merge with Wolverine, creating a new character named Dark Claw. His real name? Logan Wayne.',
+    'Christian Bale refused to play Batman if Robin appeared anywhere in the Trilogy.',
+    'There is another version of Batman where Bruce Wayne dies and his father becomes Batman and his mother becomes the Joker.',
+    'Batman was created as a combination of Zorro, Dracula, and the Shadow.',
+    'There was a unit of mass named batman, equal to roughly 16 pounds.',
+    'Batman first appeared in Detective Comics on 1939.',
+];
+
+//=========================================================================================================================================
+//Editing anything below this line might break your skill.
+//=========================================================================================================================================
+
+const handlers = {
+    'LaunchRequest': function () {
+        var imbatman = '<voice name="Matthew">I am Batman. wanna know about me?</voice>.';
+        this.response.speak(imbatman);
+        this.emit(':responseReady');
+    },
+    'GetNewFactIntent': function () {
+        const factArr = data;
+        const factIndex = Math.floor(Math.random() * factArr.length);
+        const randomFact = factArr[factIndex];
+        const speechOutput = GET_FACT_MESSAGE + randomFact;
+
+        this.response.cardRenderer(SKILL_NAME, randomFact);
+        this.response.speak(speechOutput);
+        this.emit(':responseReady');
+    },
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = HELP_MESSAGE;
+        const reprompt = HELP_REPROMPT;
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.CancelIntent': function () {
+        this.response.speak(STOP_MESSAGE);
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak(STOP_MESSAGE);
+        this.emit(':responseReady');
+    },
+};
+
+exports.handler = function (event, context, callback) {
+    const alexa = Alexa.handler(event, context, callback);
+    alexa.APP_ID = APP_ID;
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
